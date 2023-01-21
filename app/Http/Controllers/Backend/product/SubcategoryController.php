@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Http\Controllers\Backend\product;
+
+
+use App\Http\Controllers\Controller;
+
+use App\Models\category;
+use App\Models\subcategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
+
+class SubcategoryController extends Controller
+{
+    //
+    public function view()
+    {
+        $categories = category::all();
+        // echo '<pre>';
+        // print_r($categories);
+        // die;
+        return view('Backend.dasboard.product.subcategory.subcategory')->with('category_id', $categories);
+    }
+
+
+    public function subcategory_insert(Request $request)
+    {
+        $id = $request->id;
+
+        $data['status'] = 0;
+        $data['massage'] = "! Oops Something Wrong Record Not Insert";
+
+        $datainsert['category_id'] = $request->category_name;
+        $datainsert['subcategory_name'] = $request->subcategory_name;
+        $datainsert['status'] = $request->status;
+        if ($id) {
+            $save = DB::table('subcategory')->where('id', $id)->update($datainsert);
+            $data['status'] = 1;
+            $data['massage'] = "Update Record successfully";
+        } else {
+            $save = DB::table('subcategory')->insert($datainsert);
+            $data['status'] = 1;
+            $data['massage'] = "Record Insert successfully";
+        }
+
+        return json_encode($data);
+    }
+
+    public function subcategorylist()
+    {
+
+        $data = DB::table('subcategory')
+        ->join('category','category.id','subcategory.category_id')
+        ->select('subcategory.*', 'category.category_name')
+        ->get();
+        // echo '<pre>';
+        // print_r($data);
+        // die;
+        return Datatables::of($data)
+        ->editColumn('categoryname', function($data) {
+            return $data->category_name;
+        })
+        ->addIndexColumn()
+            ->addColumn('action', function ($data) {
+                $btn = '<button id="subcategory_edit" data-id="' . $data->id . '" class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button>';
+                $btn .= '<button id="subcategory_delete" data-id="' . $data->id . '" class="btn btn-sm btn-icon delete-record"><i class="bx bx-trash"></i></button>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+    }
+    public function subcategoryDelete(Request $request)
+    {
+        $id = $request->id;
+        $data['status'] = 0;
+        $data['massage'] = "record not delete";
+        if ($id) {
+            $news = subcategory::findOrFail($id);
+            $news->delete();
+            $data['status'] = 1;
+            $data['massage'] = "record delete successfully";
+        }
+        return json_encode($data);
+    }
+    public function subcategory_edit(Request $request)
+    {
+        $id = $request->id;
+        if ($id) {
+            $data = DB::table('subcategory')->where('id', $id)->first();
+            // echo '<pre>';
+            // print_r($data);
+            // die;
+            return json_encode($data);
+        }
+    }
+}
