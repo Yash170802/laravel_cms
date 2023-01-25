@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class team extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $table = 'team';
+    protected $table = 'teams';
 
     /**
      * The attributes that are mass assignable.

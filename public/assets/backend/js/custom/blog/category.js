@@ -4,7 +4,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "blogcategorylist",
+            url:admin_url + "/blog/category/list",
             type: 'POST',
             data: {
                 "_token":token
@@ -106,7 +106,7 @@ $(document).ready(function () {
         }).then(function (data) {
             if (data.value) {
                 $.ajax({
-                    url: "blogcategory_delete",
+                    url: admin_url + "/blog/category/delete",
                     type: "post",
                     data: {
                         _token: token,
@@ -133,7 +133,7 @@ $(document).ready(function () {
         var id = $(this).data("id");
         $("#addcategory").modal("show");
         $.ajax({
-            url: "blogcategory_edit",
+            url: admin_url +"/blog/category/edit",
             type: "post",
             data: {
                 _token: token,

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blogsubcategory', function (Blueprint $table) {
+        Schema::create('blog_subcategory', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('category_id');
             $table->string('subcategory_name',255);

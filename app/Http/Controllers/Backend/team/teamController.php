@@ -14,7 +14,7 @@ class teamController extends Controller
 {
     public function view()
     {
-        return view('Backend.dasboard.team.team');
+        return view('Backend.team.team');
     }
     public function team_insert(Request $request)
     {
@@ -26,9 +26,9 @@ class teamController extends Controller
             $file = $request->file('file');
 
             $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('team/Image'), $filename);
+            $file->move(public_path(TEAM_IMAGE_PATH), $filename);
             if ($id) {
-                $image_path = public_path('team/Image/' . $request->img_name);
+                $image_path = public_path(TEAM_IMAGE_PATH) . '/' . $request->img_name;
                 @unlink($image_path);
             }
         } else {
@@ -50,11 +50,11 @@ class teamController extends Controller
         $datainsert['img'] = $filename;
 
         if ($id) {
-            $save = DB::table('team')->where('id', $id)->update($datainsert);
+            $save = DB::table('teams')->where('id', $id)->update($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Edit successfully";
         } else {
-            $save =  DB::table('team')->insert($datainsert);
+            $save =  DB::table('teams')->insert($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Record successfully";
         }
@@ -69,7 +69,7 @@ class teamController extends Controller
         $data = team::select('*');
         return Datatables::of($data)->addIndexColumn()
             ->addColumn('img', function ($data) {
-                return asset("team/Image/$data->img");
+                return TEAM_IMAGE_PATH . '/' . $data->img;
             })
 
             ->addColumn('action', function ($data) {
@@ -89,7 +89,7 @@ class teamController extends Controller
         $data['massage'] = "record not delete";
         if ($id) {
             $news = team::findOrFail($id);
-            $image_path = public_path('team/Image/' . $news->img);
+            $image_path = public_path(TEAM_IMAGE_PATH) . '/' . $news->img;
 
             if (File::exists($image_path)) {
                 unlink($image_path);
@@ -105,7 +105,9 @@ class teamController extends Controller
     {
         $id = $request->id;
         if ($id) {
-            $data = DB::table('team')->where('id', $id)->first();
+            $data = DB::table('teams')->where('id', $id)->first();
+            $data->pro_path = TEAM_IMAGE_PATH . $data->img;
+
             return json_encode($data);
         }
     }

@@ -22,7 +22,7 @@ $(document).ready(function () {
             // var data = $(form).serializeArray();
             console.log(data);
             $.ajax({
-                url: form.action,
+                url:form.action,
                 type: form.method,
                 cache: false,
                 contentType: false,

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('smtp', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 255);
+            $table->string('name',255);
             $table->longText('value')->nullable();
             $table->timestamps();
         });

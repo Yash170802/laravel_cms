@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class subscriber extends Model
 {
     use HasFactory;
-    protected $table = 'subscriber';
+    protected $table = 'subscribers';
     protected $fillable = [
         'email',
         'status',

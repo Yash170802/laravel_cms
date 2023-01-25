@@ -4,7 +4,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "subscriberlist",
+            url:admin_url + "/subscriber/list",
             type: "POST",
             data: {
                 _token: token,
@@ -132,7 +132,7 @@ $(document).ready(function () {
         }).then(function (data) {
             if (data.value) {
                 $.ajax({
-                    url: "subscriber_delete",
+                    url:admin_url + "/subscriber/delete",
                     type: "post",
                     data: {
                         _token: token,
@@ -159,7 +159,7 @@ $(document).ready(function () {
         var id = $(this).data("id");
         $("#addsubscriber").modal("show");
         $.ajax({
-            url: "subscriber_edit",
+            url:admin_url + "/subscriber/edit",
             type: "post",
             data: {
                 _token: token,

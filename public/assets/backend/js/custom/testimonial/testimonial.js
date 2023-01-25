@@ -7,11 +7,12 @@ $(document).ready(function () {
             url: "userlist",
             type: 'POST',
             data: {
-                "_token":token
+                "_token": token
             }
         },
 
-        // ajax: "userlist",
+        ajax: BASE_URL + ADMIN + '/testimonial/list',
+
 
         columns: [
             { data: "client_name", name: "client_name" },
@@ -92,12 +93,12 @@ $(document).ready(function () {
         },
         submitHandler: function (form) {
             var data = new FormData(form);
-            console.log(data);
+            // console.log(data);
 
             data.append("file", $("#file")[0].files[0]);
             $.ajax({
-                url: form.action,
-                type: form.method,
+                url: BASE_URL + ADMIN + '/testimonial/insert',
+                type: "post",
                 cache: false,
                 contentType: false,
                 processData: false,
@@ -107,8 +108,7 @@ $(document).ready(function () {
                     if ((data.status = 1)) {
                         Swal.fire({
                             title: data.massage,
-                            text: "You clicked the button!",
-                            icon: "success",
+                            icon: 'success',
                             customClass: {
                                 confirmButton: "btn btn-primary",
                             },
@@ -139,9 +139,8 @@ $(document).ready(function () {
         var token = $("meta[name='csrf-token']").attr("content");
         var id = $(this).data("id");
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
+            title: 'Are you sure?',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: "Yes, delete it!",
             customClass: {
@@ -153,7 +152,8 @@ $(document).ready(function () {
             if (data.value) {
                 $.ajax({
                     url: "testimonial_delete",
-                    type: "post",
+                    url: BASE_URL + ADMIN + '/testimonial/delete',
+                    type: 'post',
                     data: {
                         _token: token,
                         id: id,
@@ -182,14 +182,16 @@ $(document).ready(function () {
         document.getElementById("my_image").style.display = "";
 
         $.ajax({
-            url: "testimonial_edit",
-            type: "post",
+            url: BASE_URL + ADMIN + '/testimonial/edit',
+            type: 'post',
             data: {
                 _token: token,
                 id: id,
             },
             success: function (data) {
                 var data = JSON.parse(data);
+                console.log(data.pro_path);
+
                 $("#id").val(data.id);
                 $("#client_name").val(data.client_name);
                 $("#company_name").val(data.company_name);
@@ -198,10 +200,8 @@ $(document).ready(function () {
                 $("#img_name").val(data.img);
                 // $('#file').text(data.img);
 
-                $("#my_image").attr(
-                    "src",
-                    "../../testimonial/image/" + data.img
-                );
+                $("#my_image").attr("src", data.pro_path);
+
             },
         });
     });

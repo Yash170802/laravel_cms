@@ -2,7 +2,7 @@ $(document).ready(function () {
     var token = $("meta[name='csrf-token']").attr("content");
     var load = $(".dt-subcategory").DataTable({
         ajax: {
-            url: "subcategorylist",
+            url: admin_url + "/product/subcategory/list",
             type: 'POST',
             data: {
                 "_token":token
@@ -60,7 +60,6 @@ $(document).ready(function () {
         submitHandler: function (form) {
             var data = new FormData(form);
             console.log(data);
-
             $.ajax({
                 url: form.action,
                 type: form.method,
@@ -112,7 +111,7 @@ $(document).ready(function () {
         }).then(function (data) {
             if (data.value) {
                 $.ajax({
-                    url: "subcategory_delete",
+                    url:admin_url + "/product/subcategory/delete",
                     type: "post",
                     data: {
                         _token: token,
@@ -139,7 +138,7 @@ $(document).ready(function () {
         var id = $(this).data("id");
         $("#addsubcategory").modal("show");
         $.ajax({
-            url: "subcategory_edit",
+            url: admin_url +"/product/subcategory/edit",
             type: "post",
             data: {
                 _token: token,

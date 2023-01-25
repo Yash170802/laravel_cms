@@ -7,8 +7,8 @@
     <title>Document</title>
 </head> --}}
 {{-- <body> --}}
-    {!! $long_text !!}
 
+{!! $long_text !!}
 
-{{-- </body> --}}
-{{-- </html> --}}
+{{-- </body>
+</html> --}}

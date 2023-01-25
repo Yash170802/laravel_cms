@@ -43,10 +43,9 @@ $(document).ready(function () {
         submitHandler: function (form) {
             // var data = new FormData(form);
             var data = $(form).serializeArray();
-            // console.log(data);
             $.ajax({
-                url: form.action,
-                type: form.method,
+                url: BASE_URL + ADMIN + '/smtp/insert',
+                type: "post",
                 data: data,
                 success: function (data) {
                     var data = JSON.parse(data);
@@ -81,8 +80,8 @@ $(document).ready(function () {
         submitHandler: function (form) {
             var data = $(form).serializeArray();
             $.ajax({
-                url: form.action,
-                type: form.method,
+                url: BASE_URL + ADMIN + '/smtp/mail',
+                type: "post",
                 data: data,
                 success: function (data) {
                     var data = JSON.parse(data);

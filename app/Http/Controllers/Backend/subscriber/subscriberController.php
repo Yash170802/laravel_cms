@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Backend\subscriber;
 
 use App\Http\Controllers\Controller;
@@ -11,28 +12,28 @@ class subscriberController extends Controller
 {
     public function view()
     {
-        return view('Backend.dasboard.subscriber.subscriber');
+        return view('Backend.subscriber.subscriber');
     }
     public function subscriber_insert(Request $request)
-        {
-            $id = $request->id;
-            $data['status'] = 0;
-            $data['massage'] = "! Oops Something Wrong Record Not Insert";
+    {
+        $id = $request->id;
+        $data['status'] = 0;
+        $data['massage'] = "! Oops Something Wrong Record Not Insert";
 
-            $datainsert['email'] = $request->email;
-            $datainsert['status'] = $request->status;
-            if ($id) {
-                $save = DB::table('subscriber')->where('id', $id)->update($datainsert);
-                $data['status'] = 1;
-                $data['massage'] = "Update Record successfully";
-            } else {
-                $save = DB::table('subscriber')->insert($datainsert);
-                $data['status'] = 1;
-                $data['massage'] = "Record Insert successfully";
-            }
-            return json_encode($data);
+        $datainsert['email'] = $request->email;
+        $datainsert['status'] = $request->status;
+        if ($id) {
+            $save = DB::table('subscribers')->where('id', $id)->update($datainsert);
+            $data['status'] = 1;
+            $data['massage'] = "Update Record successfully";
+        } else {
+            $save = DB::table('subscribers')->insert($datainsert);
+            $data['status'] = 1;
+            $data['massage'] = "Record Insert successfully";
         }
-        public function subscriberlist()
+        return json_encode($data);
+    }
+    public function subscriberlist()
     {
         $data = Subscriber::select('*')->get();
 
@@ -63,28 +64,25 @@ class subscriberController extends Controller
     {
         $id = $request->id;
         if ($id) {
-            $data = DB::table('subscriber')->where('id', $id)->first();
+            $data = DB::table('subscribers')->where('id', $id)->first();
             return json_encode($data);
         }
     }
-
-    public function checkEmail(Request $request){
+    public function checkEmail(Request $request)
+    {
         $email = $request->input('email');
         $id = $request->input('id');
-        if($id != '')
-        {
+        if ($id != '') {
             echo 'true';
             exit;
             // return response()->json(array("exists" => false));
-        }else{
-            $isExists = subscriber::where('email',$email)->count();
-
-
-            if($isExists > 0){
+        } else {
+            $isExists = subscriber::where('email', $email)->count();
+            if ($isExists > 0) {
                 echo 'false';
                 exit;
                 // return response()->json(array("exists" => true));
-            }else{
+            } else {
                 echo 'true';
                 exit;
                 // return response()->json(array("exists" => false));
@@ -93,21 +91,21 @@ class subscriberController extends Controller
 
 
 
-    // $userID = $request->id;
-    // if ($userID) {
-    //   $userEmail = subscriber::where(['email' => $request->email])->where('id', '!=', $userID)->first();
-    //   if (!empty($userEmail)) {
-    //     return response()->json(true);
-    //   } else {
-    //     return response()->json(false);
-    //   }
-    // } else {
-    //   $userEmail = subscriber::where(['email' => $request->email])->first();
-    //   if (!empty($userEmail)) {
-    //     return response()->json(true);
-    //   } else {
-    //     return response()->json(false);
-    //   }
-    // }
+        // $userID = $request->id;
+        // if ($userID) {
+        //   $userEmail = subscriber::where(['email' => $request->email])->where('id', '!=', $userID)->first();
+        //   if (!empty($userEmail)) {
+        //     return response()->json(true);
+        //   } else {
+        //     return response()->json(false);
+        //   }
+        // } else {
+        //   $userEmail = subscriber::where(['email' => $request->email])->first();
+        //   if (!empty($userEmail)) {
+        //     return response()->json(true);
+        //   } else {
+        //     return response()->json(false);
+        //   }
+        // }
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class category extends Model
 {
     use HasFactory, Notifiable;
-    protected $table = 'category';
+    protected $table = 'product_category';
     protected $fillable = [
         'category_name',
         'Status',

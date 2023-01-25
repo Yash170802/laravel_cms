@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class blog extends Model
 {
     use HasFactory;
-    protected $table = 'blog';
+    protected $table = 'blogs';
     protected $fillable = [
         'blog_title',
         'slug',

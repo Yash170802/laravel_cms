@@ -12,17 +12,17 @@ class emailtosubscriberController extends Controller
 {
     public function view()
     {
-        return view('Backend.dasboard.subscriber.emailtosubscriber');
+        return view('Backend.subscriber.emailtosubscriber');
     }
     public function getdata(Request $request)
     {
         // $users = subscriber::get(['email']);
         $users = subscriber::select('email')->get()->toArray();
         $emails = array_column($users, 'email');
-
-         $data['long_text'] = $request->long_text;
-
-
+        $data['long_text'] = $request->long_text;
+        // echo '<pre>';
+        // print_r($request->long_text);
+        // die;
         if (send_mail('emails.subscription', $data, $emails, "test user", $request->title)) {
             $data['status'] = 1;
             $data['massage'] = "Test Mail Send Successfully";

@@ -16,7 +16,7 @@ class BlogController extends Controller
     {
         $categories = blogcategory::all();
         $subcategories = blogsubcategory::all();
-        return view('Backend.dasboard.blog.blog')->with(compact('categories','subcategories'));
+        return view('Backend.blog.blog')->with(compact('categories','subcategories'));
     }
 
     public function blog_insert(Request $request)
@@ -31,11 +31,11 @@ class BlogController extends Controller
         $datainsert['category_id'] = $request->category_name;
         $datainsert['subcategory_id'] = $request->subcategory_name;
         if ($id) {
-            $save = DB::table('blog')->where('id', $id)->update($datainsert);
+            $save = DB::table('blogs')->where('id', $id)->update($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Update Record successfully";
         } else {
-            $save = DB::table('blog')->insert($datainsert);
+            $save = DB::table('blogs')->insert($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Record Insert successfully";
         }
@@ -46,9 +46,9 @@ class BlogController extends Controller
     {
 
         // $data = blog::select('*');
-        $data = DB::table('blog')->select('blog.*', 'blogcategory.category_name','blogsubcategory.subcategory_name')
-            ->join('blogcategory', 'blogcategory.id', 'blog.category_id')
-            ->join('blogsubcategory', 'blogsubcategory.id', 'blog.subcategory_id')
+        $data = DB::table('blogs')->select('blogs.*', 'blog_category.category_name','blog_subcategory.subcategory_name')
+            ->join('blog_category', 'blog_category.id', 'blogs.category_id')
+            ->join('blog_subcategory', 'blog_subcategory.id', 'blogs.subcategory_id')
             ->get();
             return Datatables::of($data)
             ->editColumn('categoryname', function ($data) {
@@ -83,7 +83,7 @@ class BlogController extends Controller
     {
         $id = $request->id;
         if ($id) {
-            $data = DB::table('blog')->where('id', $id)->first();
+            $data = DB::table('blogs')->where('id', $id)->first();
             return json_encode($data);
         }
     }

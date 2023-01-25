@@ -17,7 +17,7 @@ function update_option($name, $value)
         return add_option($name, $value);
     }
 
-    DB::table('setting')
+    DB::table('settings')
         ->where('name', $name)
         ->update(['value' => $value]);
 
@@ -26,11 +26,11 @@ function update_option($name, $value)
 
 function get_option($name)
 {
-    return DB::table('setting')->where(['name' => $name])->first();
+    return DB::table('settings')->where(['name' => $name])->first();
 }
 function option_exists($name)
 {
-    $option_Data = DB::table('setting')->where(['name' => $name])->first();
+    $option_Data = DB::table('settings')->where(['name' => $name])->first();
     if (isset($option_Data->name)) {
         return true;
     }
@@ -45,7 +45,7 @@ function add_option($name, $value = '')
             'value' => $value,
         ];
 
-        $lastInsertId = DB::table('setting')->insertGetId($newData);
+        $lastInsertId = DB::table('settings')->insertGetId($newData);
 
 
         if ($lastInsertId) {

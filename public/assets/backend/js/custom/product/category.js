@@ -3,16 +3,15 @@ $(document).ready(function () {
     var load = $(".dt-category").DataTable({
         processing: true,
         serverSide: true,
+        // "searching": true,
+        // searchable: true,
         ajax: {
-            url: "categorylist",
+            url: admin_url + "/product/category/list",
             type: 'POST',
             data: {
-                "_token":token
+                "_token": token
             }
         },
-
-        // ajax: "categorylist",
-
         columns: [
             { data: "category_name", name: "category_name" },
             {
@@ -34,6 +33,11 @@ $(document).ready(function () {
             },
         ],
     });
+    // $('.dt-category input[type=search]').on( 'keyup click', function () {
+    //       .column('1')
+    //       .search( "^" + this.value, true, false, true )
+    //       .draw();
+    //   });
     // Validation...........................................................
     $("#addcategory form").validate({
         rules: {
@@ -89,7 +93,7 @@ $(document).ready(function () {
         $("label.error").hide();
         $(".error").removeClass("error");
     });
-// ..................................................................................Delete
+    // ..................................................................................Delete
     $(document).on("click", "#category_delete", function () {
         var token = $("meta[name='csrf-token']").attr("content");
         var id = $(this).data("id");
@@ -107,7 +111,7 @@ $(document).ready(function () {
         }).then(function (data) {
             if (data.value) {
                 $.ajax({
-                    url: "category_delete",
+                    url: admin_url + "/product/category/delete",
                     type: "post",
                     data: {
                         _token: token,
@@ -133,7 +137,7 @@ $(document).ready(function () {
         var id = $(this).data("id");
         $("#addcategory").modal("show");
         $.ajax({
-            url: "category_edit",
+            url: admin_url + "/product/category/edit",
             type: "post",
             data: {
                 _token: token,

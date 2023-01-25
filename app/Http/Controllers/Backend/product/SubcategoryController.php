@@ -20,7 +20,7 @@ class SubcategoryController extends Controller
         // echo '<pre>';
         // print_r($categories);
         // die;
-        return view('Backend.dasboard.product.subcategory.subcategory')->with('category_id', $categories);
+        return view('Backend.product.subcategory.subcategory')->with('category_id', $categories);
     }
 
 
@@ -35,11 +35,11 @@ class SubcategoryController extends Controller
         $datainsert['subcategory_name'] = $request->subcategory_name;
         $datainsert['status'] = $request->status;
         if ($id) {
-            $save = DB::table('subcategory')->where('id', $id)->update($datainsert);
+            $save = DB::table('product_subcategory')->where('id', $id)->update($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Update Record successfully";
         } else {
-            $save = DB::table('subcategory')->insert($datainsert);
+            $save = DB::table('product_subcategory')->insert($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Record Insert successfully";
         }
@@ -50,18 +50,19 @@ class SubcategoryController extends Controller
     public function subcategorylist()
     {
 
-        $data = DB::table('subcategory')
-        ->join('category','category.id','subcategory.category_id')
-        ->select('subcategory.*', 'category.category_name')
-        ->get();
-        // echo '<pre>';
-        // print_r($data);
-        // die;
+        // $data = DB::table('product_subcategory')
+        //     ->join('product_category', 'category_id', 'product_subcategory.category_id')
+        //     ->select('product_subcategory.*', 'product_category.category_name')
+        //     ->get();
+            $data = DB::table('product_subcategory')
+            ->join('product_category','product_category.id','product_subcategory.category_id')
+            ->select('product_subcategory.*', 'product_category.category_name')
+            ->get();
         return Datatables::of($data)
-        ->editColumn('categoryname', function($data) {
-            return $data->category_name;
-        })
-        ->addIndexColumn()
+            ->editColumn('categoryname', function ($data) {
+                return $data->category_name;
+            })
+            ->addIndexColumn()
             ->addColumn('action', function ($data) {
                 $btn = '<button id="subcategory_edit" data-id="' . $data->id . '" class="btn btn-sm btn-icon"><i class="bx bx-edit"></i></button>';
                 $btn .= '<button id="subcategory_delete" data-id="' . $data->id . '" class="btn btn-sm btn-icon delete-record"><i class="bx bx-trash"></i></button>';
@@ -87,7 +88,7 @@ class SubcategoryController extends Controller
     {
         $id = $request->id;
         if ($id) {
-            $data = DB::table('subcategory')->where('id', $id)->first();
+            $data = DB::table('product_subcategory')->where('id', $id)->first();
             // echo '<pre>';
             // print_r($data);
             // die;

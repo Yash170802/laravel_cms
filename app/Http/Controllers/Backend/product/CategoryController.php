@@ -15,7 +15,7 @@ class CategoryController extends Controller
     //
     public function view()
     {
-        return view('Backend.dasboard.product.category.category');
+        return view('Backend.product.category.category');
     }
 
     public function category_insert(Request $request)
@@ -27,11 +27,11 @@ class CategoryController extends Controller
         $datainsert['category_name'] = $request->category_name;
         $datainsert['status'] = $request->status;
         if ($id) {
-            $save = DB::table('category')->where('id', $id)->update($datainsert);
+            $save = DB::table('product_category')->where('id', $id)->update($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Update Record successfully";
         } else {
-            $save = DB::table('category')->insert($datainsert);
+            $save = DB::table('product_category')->insert($datainsert);
             $data['status'] = 1;
             $data['massage'] = "Record Insert successfully";
         }
@@ -68,7 +68,7 @@ class CategoryController extends Controller
     {
         $id = $request->id;
         if ($id) {
-            $data = DB::table('category')->where('id', $id)->first();
+            $data = DB::table('product_category')->where('id', $id)->first();
             return json_encode($data);
         }
     }

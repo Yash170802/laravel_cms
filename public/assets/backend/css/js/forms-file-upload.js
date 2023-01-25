@@ -39,10 +39,10 @@
 
   // Multiple Dropzone
   // --------------------------------------------------------------------
-  const dropzoneMulti = new Dropzone('#dropzone-multi', {
-    previewTemplate: previewTemplate,
-    parallelUploads: 1,
-    maxFilesize: 5,
-    addRemoveLinks: true
-  });
+  // const dropzoneMulti = new Dropzone('#dropzone-multi', {
+  //   previewTemplate: previewTemplate,
+  //   parallelUploads: 1,
+  //   maxFilesize: 5,
+  //   addRemoveLinks: true
+  // });
 })();

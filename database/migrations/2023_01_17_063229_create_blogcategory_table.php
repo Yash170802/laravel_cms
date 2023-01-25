@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blogcategory', function (Blueprint $table) {
+        Schema::create('blog_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('category_name',255);
             $table->integer('status');

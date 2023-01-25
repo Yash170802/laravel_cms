@@ -5,7 +5,7 @@ $(document).ready(function () {
         serverSide: true,
         // ajax: "bloglist",
         ajax: {
-            url: "bloglist",
+            url:admin_url + "/blog/list",
             type: "POST",
             data: {
                 _token: token,
@@ -113,7 +113,7 @@ $(document).ready(function () {
         }).then(function (data) {
             if (data.value) {
                 $.ajax({
-                    url: "blog_delete",
+                    url: admin_url +"/blog/delete",
                     type: "post",
                     data: {
                         _token: token,
@@ -140,7 +140,7 @@ $(document).ready(function () {
         var id = $(this).data("id");
         $("#addcategory").modal("show");
         $.ajax({
-            url: "blog_edit",
+            url:admin_url + "/blog/edit",
             type: "post",
             data: {
                 _token: token,

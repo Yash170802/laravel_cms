@@ -5,7 +5,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: "teamlist",
+            url:admin_url + "/team/list",
             type: "POST",
             data: {
                 _token: token,
@@ -149,7 +149,7 @@ $(document).ready(function () {
         }).then(function (data) {
             if (data.value) {
                 $.ajax({
-                    url: "team_delete",
+                    url: admin_url +"/team/delete",
                     type: "post",
                     data: {
                         _token: token,
@@ -179,7 +179,7 @@ $(document).ready(function () {
         document.getElementById("my_image").style.display = "";
 
         $.ajax({
-            url: "team_edit",
+            url:admin_url + "/team/edit",
             type: "post",
             data: {
                 _token: token,
@@ -204,7 +204,7 @@ $(document).ready(function () {
                 $("#img_name").val(data.img);
                 // $('#file').text(data.img);
 
-                $("#my_image").attr("src", "../../team/image/" + data.img);
+                $("#my_image").attr("src",  data.pro_path);
             },
         });
     });

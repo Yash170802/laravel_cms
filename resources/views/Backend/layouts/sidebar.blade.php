@@ -120,21 +120,21 @@ $route = Route::currentRouteName();
                 <div data-i18n="TestiMonial">TestiMonial</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::routeIs('admin.category') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::routeIs('admin.product-category') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
                 <div data-i18n="Product-Category">Product</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::routeIs('admin.category') ? 'active' : '' }}">
-                    <a href="{{ route('admin.category') }}" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('admin.product-category') ? 'active' : '' }}">
+                    <a href="{{ route('admin.product-category') }}" class="menu-link">
                         <div data-i18n="Category">Category</div>
                     </a>
                 </li>
             </ul>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::routeIs('admin.subcategory') ? 'active' : '' }}">
-                    <a href="{{ route('admin.subcategory') }}" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('admin.product-subcategory') ? 'active' : '' }}">
+                    <a href="{{ route('admin.product-subcategory') }}" class="menu-link">
                         <div data-i18n="Subcategory">SubCategory</div>
                     </a>
                 </li>
@@ -146,27 +146,27 @@ $route = Route::currentRouteName();
                 <div data-i18n="Blog">Blog</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::routeIs('admin.blogcategory') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::routeIs('admin.blog-category') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxl-blogger'></i>
                 <div data-i18n="Blog-Category">Blog</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::routeIs('admin.blogcategory') ? 'active' : '' }}">
-                    <a href="{{ route('admin.blogcategory') }}" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('admin.blog-category') ? 'active' : '' }}">
+                    <a href="{{ route('admin.blog-category') }}" class="menu-link">
                         <div data-i18n="Category">Category</div>
                     </a>
                 </li>
             </ul>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::routeIs('admin.blogsubcategory') ? 'active' : '' }}">
-                    <a href="{{ route('admin.blogsubcategory') }}" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('admin.blog-subcategory') ? 'active' : '' }}">
+                    <a href="{{ route('admin.blog-subcategory') }}" class="menu-link">
                         <div data-i18n="Subcategory">SubCategory</div>
                     </a>
                 </li>
             </ul>
         </li>
-        <li class="menu-item {{ Request::routeIs('admin.blogcategory') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::routeIs('admin.subscriber') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-bell-ring'></i>
                 <div data-i18n="Subscriber">Subscriber</div>
@@ -174,13 +174,13 @@ $route = Route::currentRouteName();
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::routeIs('admin.subscriber') ? 'active' : '' }}">
                     <a href="{{ route('admin.subscriber') }}" class="menu-link">
-                        <div data-i18n="allsubscriber">All Subscriber</div>
+                        <div data-i18n="All Subscriber">All Subscriber</div>
                     </a>
                 </li>
             </ul>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::routeIs('admin.emailtosubscriber') ? 'active' : '' }}">
-                    <a href="{{ route('admin.emailtosubscriber') }}" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('admin.emailto-subscriber') ? 'active' : '' }}">
+                    <a href="{{ route('admin.emailto-subscriber') }}" class="menu-link">
                         <div data-i18n="Email to Subscriber">Email To Subscriber</div>
                     </a>
                 </li>
@@ -198,6 +198,18 @@ $route = Route::currentRouteName();
                     </a>
                 </li>
             </ul>
+        </li>
+        <li class="menu-item {{ Request::routeIs('admin.products') ? 'active' : '' }}">
+            <a href="{{route('admin.products')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Products">Products</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::routeIs('admin.faq') ? 'active' : '' }}">
+            <a href="{{ route('admin.faq') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="FAQ">FAQ</div>
+            </a>
         </li>
         <li class="menu-item {{ Request::routeIs('admin.smtp_settings') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -219,5 +231,6 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
+
     </ul>
 </aside>

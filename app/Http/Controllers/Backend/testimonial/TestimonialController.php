@@ -1,22 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Backend\testimonial;
-
+namespace App\Http\Controllers\Backend\Testimonial;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
-// use DB;
-// use DataTables;
+use DB;
+use DataTables;
 use App\Models\Testimonial;
-use Faker\Core\File as CoreFile;
 use File;
-use Illuminate\Support\Facades\DB;
-use Yajra\DataTables\Facades\DataTables;
+
 
 class TestimonialController extends Controller
 {
     public function view()
     {
-        return view('Backend.dasboard.testimonial.testimonial');
+        return view('Backend.testimonial.index');
     }
     public function insert(Request $request)
     {
@@ -28,9 +26,10 @@ class TestimonialController extends Controller
             $file = $request->file('file');
 
             $filename = date('YmdHi') . $file->getClientOriginalName();
-            $file->move(public_path('testimonial/Image'), $filename);
+             $file->move(public_path(TESTIMONIAL_IMAGE_PATH), $filename);
+
             if ($id) {
-                $image_path =public_path('testimonial/Image/'.$request->img_name);
+                $image_path =public_path(TESTIMONIAL_IMAGE_PATH).'/'.$request->img_name;
                 @unlink($image_path);
             }
         }else{
@@ -55,13 +54,14 @@ class TestimonialController extends Controller
 
             return json_encode($data);
     }
-    public function userlist()
+    public function list()
     {
 
         $data = Testimonial::select('*');
-        return Datatables::of($data)->addIndexColumn()
+        return datatables::of($data)->addIndexColumn()
             ->addColumn('img', function ($data) {
-                return asset("testimonial/Image/$data->img");
+                return   TESTIMONIAL_IMAGE_PATH .'/'. $data->img;
+
             })
 
             ->addColumn('action', function ($data) {
@@ -73,7 +73,7 @@ class TestimonialController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
-    public function testimonialDelete(Request $request)
+    public function delete(Request $request)
     {
 
         $id = $request->id;
@@ -81,7 +81,7 @@ class TestimonialController extends Controller
         $data['massage'] = "record not delete";
         if ($id) {
         $news = testimonial::findOrFail($id);
-        $image_path = public_path('testimonial/Image/'.$news->img);
+        $image_path =public_path(TESTIMONIAL_IMAGE_PATH).'/'.$news->img;
 
         if (File::exists($image_path)) {
             unlink($image_path);
@@ -93,11 +93,13 @@ class TestimonialController extends Controller
         }
         return json_encode($data);
     }
-    public function testimonial_edit(Request $request)
+    public function edit(Request $request)
     {
+
         $id = $request->id;
         if ($id) {
             $data = DB::table('testimonial')->where('id', $id)->first();
+            $data->pro_path = TESTIMONIAL_IMAGE_PATH . $data->img;
             return json_encode($data);
         }
     }
