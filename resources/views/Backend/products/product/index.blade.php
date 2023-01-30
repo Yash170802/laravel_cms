@@ -34,6 +34,6 @@
 
 @section('extraJs')
 
-<script src="{{ asset('assets/backend/js/custom/product.js') }}"></script>
+<script src="{{ asset('assets/backend/js/custom/product/product.js') }}"></script>
 
 @endsection

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
-class subscriberController extends Controller
+class SubscriberController extends Controller
 {
     public function view()
     {

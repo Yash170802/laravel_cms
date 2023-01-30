@@ -112,19 +112,33 @@ $route = Route::currentRouteName();
                 <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
-
-        <!-- Layouts -->
+        {{-- Testimonial --}}
         <li class="menu-item {{ Request::routeIs('admin.testimonial') ? 'active' : '' }}">
-            <a href="{{ route('admin.testimonial') }}" class="menu-link">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="TestiMonial">TestiMonial</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.testimonial') ? 'active' : '' }}">
+                    <a href="{{ route('admin.testimonial') }}" class="menu-link">
+                        <div data-i18n="TestiMonial">TestiMonial</div>
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li class="menu-item {{ Request::routeIs('admin.product-category') ? 'active' : '' }}">
+        {{-- Product --}}
+        <li class="menu-item {{ Request::routeIs('admin.products') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class='menu-icon tf-icons bx bxl-product-hunt'></i>
-                <div data-i18n="Product-Category">Product</div>
+                <i class="menu-icon tf-icons fab fa-product-hunt"></i>
+                <div data-i18n="Products">Product</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.products') ? 'active' : '' }}">
+                    <a href="{{ route('admin.products') }}" class="menu-link">
+                        <div data-i18n="Products">Products</div>
+                    </a>
+                </li>
+            </ul>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::routeIs('admin.product-category') ? 'active' : '' }}">
                     <a href="{{ route('admin.product-category') }}" class="menu-link">
@@ -140,17 +154,18 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
+        {{-- Blog --}}
         <li class="menu-item {{ Request::routeIs('admin.blog') ? 'active' : '' }}">
-            <a href="{{ route('admin.blog') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons fa-brands fa-blogger"></i>
                 <div data-i18n="Blog">Blog</div>
             </a>
-        </li>
-        <li class="menu-item {{ Request::routeIs('admin.blog-category') ? 'active' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class='menu-icon tf-icons bx bxl-blogger'></i>
-                <div data-i18n="Blog-Category">Blog</div>
-            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.blog') ? 'active' : '' }}">
+                    <a href="{{ route('admin.blog') }}" class="menu-link">
+                        <div data-i18n="Blog">Blog</div>
+                    </a>
+            </ul>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::routeIs('admin.blog-category') ? 'active' : '' }}">
                     <a href="{{ route('admin.blog-category') }}" class="menu-link">
@@ -166,6 +181,7 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
+        {{-- Subscriber --}}
         <li class="menu-item {{ Request::routeIs('admin.subscriber') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxs-bell-ring'></i>
@@ -186,6 +202,7 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
+        {{-- Team --}}
         <li class="menu-item {{ Request::routeIs('admin.team') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class='menu-icon tf-icons bx bxl-microsoft-teams'></i>
@@ -199,18 +216,84 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
-        <li class="menu-item {{ Request::routeIs('admin.products') ? 'active' : '' }}">
-            <a href="{{route('admin.products')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Products">Products</div>
+        {{-- Service --}}
+        <li class="menu-item {{ Request::routeIs('admin.service') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='fa-solid menu-icon fa-life-ring'></i>
+                <div data-i18n="Service">Service</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.service') ? 'active' : '' }}">
+                    <a href="{{ route('admin.service') }}" class="menu-link">
+                        <div data-i18n="Service">Service</div>
+                    </a>
+                </li>
+            </ul>
         </li>
+        {{-- Portfolio SETTING --}}
+        <li class="menu-item {{ Request::routeIs('admin.admin.portfolio') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons fa fa-briefcase"></i>
+                <div data-i18n="Portfolio">Portfolio</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.portfolio') ? 'active' : '' }}">
+                    <a href="{{ route('admin.portfolio') }}" class="menu-link">
+                        <div data-i18n="Portfolio">Portfolio</div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.portfolioCategories') ? 'active' : '' }}">
+                    <a href="{{ route('admin.portfolioCategories') }}" class="menu-link">
+                        <div data-i18n="Portfolio Categories">Portfolio Categories</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{-- Client --}}
+        <li class="menu-item {{ Request::routeIs('admin.client') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='menu-icon tf-icons fa fa-clone'></i>
+                <div data-i18n="Client">Client</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.client') ? 'active' : '' }}">
+                    <a href="{{ route('admin.client') }}" class="menu-link">
+                        <div data-i18n="Client">Client</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{-- Feature --}}
+        <li class="menu-item {{ Request::routeIs('admin.feature') ? 'active' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='menu-icon tf-icons  fa fa-cogs'></i>
+                <div data-i18n="Feature">Feature</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.feature') ? 'active' : '' }}">
+                    <a href="{{ route('admin.feature') }}" class="menu-link">
+                        <div data-i18n="Feature">Feature</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        {{-- Faq --}}
         <li class="menu-item {{ Request::routeIs('admin.faq') ? 'active' : '' }}">
-            <a href="{{ route('admin.faq') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class='menu-icon tf-icons  fa fa-question-circle'></i>
                 <div data-i18n="FAQ">FAQ</div>
             </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('admin.faq') ? 'active' : '' }}">
+                    <a href="{{ route('admin.faq') }}" class="menu-link">
+                        <div data-i18n="FAQ">FAQ</div>
+                    </a>
+                </li>
+            </ul>
         </li>
+        {{-- Global Setting --}}
         <li class="menu-item {{ Request::routeIs('admin.smtp_settings') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
@@ -231,6 +314,5 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
-
     </ul>
 </aside>

@@ -23,7 +23,7 @@
                     <th>Action</th>
                 </tr>
             </thead>
-          
+
         </table>
     </div>
 </div>
@@ -34,6 +34,6 @@
 
 @section('extraJs')
 
-<script src="{{ asset('assets/backend/js/custom/productImage.js') }}"></script>
+<script src="{{ asset('assets/backend/js/custom/product/productImage.js') }}"></script>
 
 @endsection

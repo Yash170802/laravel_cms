@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
-class emailtosubscriberController extends Controller
+class EmailtosubscriberController extends Controller
 {
     public function view()
     {

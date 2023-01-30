@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
-class subcategoryController extends Controller
+class SubcategoryController extends Controller
 {
     //
     public function view()

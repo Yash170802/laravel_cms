@@ -6,7 +6,7 @@
 </h4>
 
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmember">
-        Add Team Member
+        <i class='bx bx-user-plus'> </i> Add Team Member
     </button>
 
 

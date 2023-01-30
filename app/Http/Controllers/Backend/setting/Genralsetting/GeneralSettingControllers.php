@@ -22,13 +22,20 @@ class GeneralSettingControllers extends Controller
         $receiveemail = get_option('receive_email');
 
         // Store In Array..................................................................................................
-        $data['logo'] = $img_name->value;
-        $data['favicon'] = $favicon_name->value;
-        $data['email'] = $email->value;
-        $data['number'] = $number->value;
-        $data['favcolor'] = $favcolor->value;
-        $data['send_email'] = $sendemail->value;
-        $data['receive_email'] = $receiveemail->value;
+        // $data['logo'] = $img_name->value;
+        // $data['favicon'] = $favicon_name->value;
+        // $data['email'] = $email->value;
+        // $data['number'] = $number->value;
+        // $data['favcolor'] = $favcolor->value;
+        // $data['send_email'] = $sendemail->value;
+        // $data['receive_email'] = $receiveemail->value;
+        $data['logo'] = (isset($img_name->value) ? ($img_name->value) : '');
+        $data['favicon'] = isset($favicon_name->value) ? ($favicon_name->value) : '';
+        $data['email'] = isset($email->value) ? ($email->value) : '';
+        $data['number'] = isset($number->value) ? ($number->value) : '';
+        $data['favcolor'] = isset($favcolor->value) ? ($favcolor->value) : '';
+        $data['send_email'] = isset($sendemail->value) ? ($sendemail->value) : '';
+        $data['receive_email'] = isset($receiveemail->value) ? ($receiveemail->value) : '';
 
         // Return View................................................................................................
         return view('Backend.generalsetting.generalsetting', $data);
@@ -44,7 +51,7 @@ class GeneralSettingControllers extends Controller
         $img_name = DB::table('settings')->where('name', 'logo_img')->first();
 
         // $old_img = get_option('logo_img');
-        $old_img = public_path(LOGO_IMAGE_PATH).'/' .$img_name->value;
+        $old_img = public_path(LOGO_IMAGE_PATH) . '/' . $img_name->value;
 
         if (File::exists($old_img)) {
             File::delete($old_img);
@@ -67,7 +74,7 @@ class GeneralSettingControllers extends Controller
         $favicon_name = DB::table('settings')->where('name', 'favicon_img')->first();
 
         $old_img = get_option('logo_img');
-        $old_img = public_path(FAVICON_IMAGE_PATH.$favicon_name->value);
+        $old_img = public_path(FAVICON_IMAGE_PATH . $favicon_name->value);
 
         if (File::exists($old_img)) {
             File::delete($old_img);

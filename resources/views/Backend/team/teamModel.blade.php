@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="text-center mb-4">
-                    <h3 class="address-title">Add Team Member</h3>
+                    <h3 class="address-title"><i class='bx bx-user-plus'> Add Team Member</i></h3>
                 </div>
                 <form id="formTeam" class="row g-3" method="post" action="{{ route('admin.team-insert') }}"
                     enctype="multipart/form-data" onsubmit="return false">
@@ -49,32 +49,32 @@
                     </div>
                     {{-- Social Media  --}}
                     <div class="col-12">
-                        <label class="form-label" for="client_name">Facebook</label>
+                        <label class="form-label bx bxl-facebook" for="client_name"> Facebook</label>
                         <input type="url" id="facebook" name="facebook" class="form-control"
                             placeholder="Please Enter Your Team Member Facebook Url ">
                     </div>
                     <div class="col-12">
-                        <label class="form-label" for="client_name">Twitter</label>
+                        <label class="form-label bx bxl-twitter" for="client_name"> Twitter</label>
                         <input type="url" id="twitter" name="twitter" class="form-control"
                             placeholder="Please Enter Your Team Member Twitter Url">
                     </div>
                     <div class="col-12">
-                        <label class="form-label" for="client_name">Linkedin</label>
+                        <label class="form-label bx bxl-linkedin" for="client_name"> Linkedin</label>
                         <input type="url" id="linkedin" name="linkedin" class="form-control"
                             placeholder="Please Enter Your Team Member Linkedin Url">
                     </div>
                     <div class="col-12">
-                        <label class="form-label" for="client_name">Googls Plus</label>
+                        <label class="form-label bx bxl-google-plus " for="client_name"> Googls Plus</label>
                         <input type="url" id="googlsplus" name="googlsplus" class="form-control"
                             placeholder="Please Enter Your Team Member Googlsplus Url">
                     </div>
                     <div class="col-12">
-                        <label class="form-label" for="client_name">Flickr</label>
+                        <label class="form-label bx bxl-flickr" for="client_name"> Flickr</label>
                         <input type="url" id="flickr" name="flickr" class="form-control"
                             placeholder="Please Enter Your Team Member Flickr Url">
                     </div>
                     <div class="col-12">
-                        <label class="form-label" for="client_name">Instagram</label>
+                        <label class="form-label bx bxl-instagram" for="client_name"> Instagram</label>
                         <input type="url" id="instagram" name="instagram" class="form-control"
                             placeholder="Please Enter Team Member Instagram Url">
                     </div>

@@ -44,6 +44,9 @@
     <link rel="stylesheet" href="{{ asset('assets/backend/libs/sweetalert2/sweetalert2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/backend/libs/dropzone/dropzone.css') }}" />
 
+    <link rel="stylesheet" href="{{ asset('assets/backend/libs/flatpickr/flatpickr.css') }}" />
+
+
     <script type="text/javascript">
         var BASE_URL = "{{ url('/') }}/";
         var ADMIN = "admin";
@@ -134,6 +137,7 @@
 
     <script src="{{ asset('assets/backend/libs/dropzone/dropzone.js') }}"></script>
 
+    <script src="{{ asset('assets/backend/libs/flatpickr/flatpickr.js') }}"></script>
 
 
 

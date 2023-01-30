@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 
-class teamController extends Controller
+class TeamController extends Controller
 {
     public function view()
     {

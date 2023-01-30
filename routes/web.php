@@ -36,24 +36,24 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     // SUBCATEGORY...........................................................................................
     Route::get('product/subcategory', [App\Http\Controllers\Backend\product\SubcategoryController::class, 'view'])->name('product-subcategory');
-    Route::post('product/subcategory/insert', [App\Http\Controllers\Backend\product\subcategoryController::class, 'subcategory_insert'])->name('subcategory-insert');
-    Route::post('/product/subcategory/list', [App\Http\Controllers\Backend\product\subcategoryController::class, 'subcategorylist'])->name('subcategory-list');
-    Route::post('/product/subcategory/delete', [App\Http\Controllers\Backend\product\subcategoryController::class, 'subcategoryDelete'])->name('subcategory-delete');
-    Route::post('/product/subcategory/edit', [App\Http\Controllers\Backend\product\subcategoryController::class, 'subcategory_edit'])->name('subcategory-edit');
+    Route::post('product/subcategory/insert', [App\Http\Controllers\Backend\product\SubcategoryController::class, 'subcategory_insert'])->name('subcategory-insert');
+    Route::post('/product/subcategory/list', [App\Http\Controllers\Backend\product\SubcategoryController::class, 'subcategorylist'])->name('subcategory-list');
+    Route::post('/product/subcategory/delete', [App\Http\Controllers\Backend\product\SubcategoryController::class, 'subcategoryDelete'])->name('subcategory-delete');
+    Route::post('/product/subcategory/edit', [App\Http\Controllers\Backend\product\SubcategoryController::class, 'subcategory_edit'])->name('subcategory-edit');
 
     // BLOG CATEGORY...........................................................................................
-    Route::get('blog/category', [App\Http\Controllers\Backend\Blog\categoryController::class, 'view'])->name('blog-category');
-    Route::post('blog/category/insert', [App\Http\Controllers\Backend\Blog\categoryController::class, 'category_insert'])->name('category_insert');
-    Route::post('/blog/category/list', [App\Http\Controllers\Backend\Blog\categoryController::class, 'categorylist'])->name('categorylist');
-    Route::post('/blog/category/delete', [App\Http\Controllers\Backend\blog\categoryController::class, 'categoryDelete'])->name('categoy-delete');
-    Route::post('/blog/category/edit', [App\Http\Controllers\Backend\blog\categoryController::class, 'category_edit'])->name('categoy-edit');
+    Route::get('blog/category', [App\Http\Controllers\Backend\Blog\CategoryController::class, 'view'])->name('blog-category');
+    Route::post('blog/category/insert', [App\Http\Controllers\Backend\Blog\CategoryController::class, 'category_insert'])->name('category_insert');
+    Route::post('/blog/category/list', [App\Http\Controllers\Backend\Blog\CategoryController::class, 'categorylist'])->name('categorylist');
+    Route::post('/blog/category/delete', [App\Http\Controllers\Backend\blog\CategoryController::class, 'categoryDelete'])->name('categoy-delete');
+    Route::post('/blog/category/edit', [App\Http\Controllers\Backend\blog\CategoryController::class, 'category_edit'])->name('categoy-edit');
 
     // BLOG SUBCATEGORY...........................................................................................
-    Route::get('blog/subcategory', [App\Http\Controllers\Backend\Blog\subcategoryController::class, 'view'])->name('blog-subcategory');
-    Route::post('blog/subcategory/insert', [App\Http\Controllers\Backend\Blog\subcategoryController::class, 'subcategory_insert'])->name('subcategoy-insert');
-    Route::post('/blog/subcategory/list', [App\Http\Controllers\Backend\Blog\subcategoryController::class, 'subcategorylist'])->name('subcategoy-list');
-    Route::post('/blog/subcategory/delete', [App\Http\Controllers\Backend\Blog\subcategoryController::class, 'subcategoryDelete'])->name('subcategoy-delete');
-    Route::post('/blog/subcategory/edit', [App\Http\Controllers\Backend\Blog\subcategoryController::class, 'subcategory_edit'])->name('subcategoy-edit');
+    Route::get('blog/subcategory', [App\Http\Controllers\Backend\Blog\SubcategoryController::class, 'view'])->name('blog-subcategory');
+    Route::post('blog/subcategory/insert', [App\Http\Controllers\Backend\Blog\SubcategoryController::class, 'subcategory_insert'])->name('subcategoy-insert');
+    Route::post('/blog/subcategory/list', [App\Http\Controllers\Backend\Blog\SubcategoryController::class, 'subcategorylist'])->name('subcategoy-list');
+    Route::post('/blog/subcategory/delete', [App\Http\Controllers\Backend\Blog\SubcategoryController::class, 'subcategoryDelete'])->name('subcategoy-delete');
+    Route::post('/blog/subcategory/edit', [App\Http\Controllers\Backend\Blog\SubcategoryController::class, 'subcategory_edit'])->name('subcategoy-edit');
 
     // Blog......................................................................................................
     Route::get('blog', [App\Http\Controllers\Backend\Blog\BlogController::class, 'view'])->name('blog');
@@ -63,12 +63,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/blog/edit', [App\Http\Controllers\Backend\Blog\BlogController::class, 'blog_edit'])->name('blog_edit');
 
     // AllSUBSCRIBER...............................................................................................
-    Route::get('subscriber', [App\Http\Controllers\Backend\subscriber\subscriberController::class, 'view'])->name('subscriber');
-    Route::post('/subscriber/insert', [App\Http\Controllers\Backend\subscriber\subscriberController::class, 'subscriber_insert'])->name('subscriber-insert');
-    Route::post('/subscriber/list', [App\Http\Controllers\Backend\subscriber\subscriberController::class, 'subscriberlist'])->name('subscriber-list');
-    Route::post('/subscriber/delete', [App\Http\Controllers\Backend\subscriber\subscriberController::class, 'subscriberDelete'])->name('/subscriber-delete');
-    Route::post('/subscriber/edit', [App\Http\Controllers\Backend\subscriber\subscriberController::class, 'subscriber_edit'])->name('/subscriber-edit');
-    Route::post('/checkemail', [App\Http\Controllers\Backend\subscriber\subscriberController::class, 'checkemail'])->name('/checkemail');
+    Route::get('subscriber', [App\Http\Controllers\Backend\subscriber\SubscriberController::class, 'view'])->name('subscriber');
+    Route::post('/subscriber/insert', [App\Http\Controllers\Backend\subscriber\SubscriberController::class, 'subscriber_insert'])->name('subscriber-insert');
+    Route::post('/subscriber/list', [App\Http\Controllers\Backend\subscriber\SubscriberController::class, 'subscriberlist'])->name('subscriber-list');
+    Route::post('/subscriber/delete', [App\Http\Controllers\Backend\subscriber\SubscriberController::class, 'subscriberDelete'])->name('/subscriber-delete');
+    Route::post('/subscriber/edit', [App\Http\Controllers\Backend\subscriber\SubscriberController::class, 'subscriber_edit'])->name('/subscriber-edit');
+    Route::post('/checkemail', [App\Http\Controllers\Backend\subscriber\SubscriberController::class, 'checkemail'])->name('/checkemail');
 
     // TESTIMONIAL...................................................................................................
     Route::get('testimonial', [App\Http\Controllers\Backend\testimonial\TestimonialController::class, 'view'])->name('testimonial');
@@ -78,16 +78,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/testimonial/edit', [App\Http\Controllers\Backend\testimonial\TestimonialController::class, 'edit'])->name('testimonial.edit');
 
     //Email To Subscriber.....................................................................................
-    Route::get('emailtosubscriber', [App\Http\Controllers\Backend\subscriber\emailtosubscriberController::class, 'view'])->name('emailto-subscriber');
-    Route::post('/getdata', [App\Http\Controllers\Backend\subscriber\emailtosubscriberController::class, 'getdata'])->name('getdata');
+    Route::get('emailtosubscriber', [App\Http\Controllers\Backend\subscriber\EmailtosubscriberController::class, 'view'])->name('emailto-subscriber');
+    Route::post('/getdata', [App\Http\Controllers\Backend\subscriber\EmailtosubscriberController::class, 'getdata'])->name('getdata');
     // Route::post('/getdata', 'App\Http\Controllers\Backend\subscriber\emailtosubscriberController@getdata')->name('getdata');
 
     //Team.....................................................................................
-    Route::get('team', [App\http\Controllers\Backend\team\teamController::class, 'view'])->name('team');
-    Route::post('team/insert', [App\http\Controllers\Backend\team\teamController::class, 'team_insert'])->name('team-insert');
-    Route::post('/team/list', [App\http\Controllers\Backend\team\teamController::class, 'teamlist'])->name('team-list');
-    Route::post('/team/delete', [App\http\Controllers\Backend\team\teamController::class, 'teamDelete'])->name('team-delete');
-    Route::post('/team/edit', [App\http\Controllers\Backend\team\teamController::class, 'team_edit'])->name('team-edit');
+    Route::get('team', [App\http\Controllers\Backend\team\TeamController::class, 'view'])->name('team');
+    Route::post('team/insert', [App\http\Controllers\Backend\team\TeamController::class, 'team_insert'])->name('team-insert');
+    Route::post('/team/list', [App\http\Controllers\Backend\team\TeamController::class, 'teamlist'])->name('team-list');
+    Route::post('/team/delete', [App\http\Controllers\Backend\team\TeamController::class, 'teamDelete'])->name('team-delete');
+    Route::post('/team/edit', [App\http\Controllers\Backend\team\TeamController::class, 'team_edit'])->name('team-edit');
 
 
     //GenralSetting.....................................................................................
@@ -120,10 +120,49 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/product/image/view/delete', [App\Http\Controllers\Backend\product\ProductImageController::class, 'delete'])->name('product.image.view.delete');
     Route::post('/product/image/view/insert', [App\Http\Controllers\Backend\product\ProductImageController::class, 'insert'])->name('product.image.view.insert');
 
+    //Portfolio Categories.....................................................................................
+    Route::get('portfolioCategories', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'view'])->name('portfolioCategories');
+    Route::post('/portfolioCategories/insert', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'insert'])->name('portfolioCategories.insert');
+    Route::post('/portfolioCategories/list', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'list'])->name('portfolioCategories.list');
+    Route::post('/portfolioCategories/delete', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'delete'])->name('portfolioCategories.delete');
+    Route::post('/portfolioCategories/edit', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'edit'])->name('portfolioCategories.edit');
+
+    //portfolio.............................................................................................
+    Route::get('portfolio', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'view'])->name('portfolio');
+    Route::post('/portfolio/insert', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'insert'])->name('portfolio.insert');
+    Route::post('/portfolio/list', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'list'])->name('portfolio.list');
+    Route::post('/portfolio/delete', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'delete'])->name('portfolio.delete');
+    Route::post('/portfolio/edit', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'edit'])->name('portfolio.edit');
+    Route::post('/portfolio/image/delete', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'image_delete'])->name('portfolio.image.delete');
+
+
+
+    // CLIENT ROUTE................................................................................................
+    Route::get('client', [App\Http\Controllers\Backend\client\ClientController::class, 'view'])->name('client');
+    Route::post('/client/insert', [App\Http\Controllers\Backend\client\ClientController::class, 'client_insert'])->name('client-insert');
+    Route::post('/client/list', [App\Http\Controllers\Backend\client\ClientController::class, 'client_list'])->name('client-list');
+    Route::post('/client/delete', [App\Http\Controllers\Backend\client\ClientController::class, 'client_delete'])->name('client-delete');
+    Route::post('/client/edit', [App\Http\Controllers\Backend\client\ClientController::class, 'client_edit'])->name('client-edit');
+
     // FAQ ROUTE........................................................................................
-    Route::get('faq', [App\Http\Controllers\Backend\faq\faqController::class, 'view'])->name('faq');
-    Route::post('/faq/insert', [App\Http\Controllers\Backend\faq\faqController::class, 'faq_insert'])->name('faq-insert');
-    Route::post('/faq/list', [App\Http\Controllers\Backend\faq\faqController::class, 'faq_list'])->name('faq-list');
-    Route::post('/faq/delete', [App\Http\Controllers\Backend\faq\faqController::class, 'faq_delete'])->name('faq-delete');
-    Route::post('/faq/edit', [App\Http\Controllers\Backend\faq\faqController::class, 'faq_edit'])->name('faq-edit');
+    Route::get('faq', [App\Http\Controllers\Backend\faq\FaqController::class, 'view'])->name('faq');
+    Route::post('/faq/insert', [App\Http\Controllers\Backend\faq\FaqController::class, 'faq_insert'])->name('faq-insert');
+    Route::post('/faq/list', [App\Http\Controllers\Backend\faq\FaqController::class, 'faq_list'])->name('faq-list');
+    Route::post('/faq/delete', [App\Http\Controllers\Backend\faq\FaqController::class, 'faq_delete'])->name('faq-delete');
+    Route::post('/faq/edit', [App\Http\Controllers\Backend\faq\FaqController::class, 'faq_edit'])->name('faq-edit');
+
+    //FEATURES...................................................................................................
+    Route::get('feature', [App\Http\Controllers\Backend\feature\FeatureController::class, 'view'])->name('feature');
+    Route::post('/feature/insert', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_insert'])->name('feature-insert');
+    Route::post('/feature/list', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_list'])->name('feature-list');
+    Route::post('/feature/delete', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_delete'])->name('feature-delete');
+    Route::post('/feature/edit', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_edit'])->name('feature-edit');
+
+    //service...........................................................................................
+    Route::get('service', [App\Http\Controllers\Backend\Service\ServiceController::class, 'view'])->name('service');
+    Route::post('/service/insert', [App\Http\Controllers\Backend\Service\ServiceController::class, 'insert'])->name('service.insert');
+    Route::post('/service/list', [App\Http\Controllers\Backend\Service\ServiceController::class, 'list'])->name('service.list');
+    Route::post('/service/delete', [App\Http\Controllers\Backend\Service\ServiceController::class, 'delete'])->name('service.delete');
+    Route::post('/service/edit', [App\Http\Controllers\Backend\Service\ServiceController::class, 'edit'])->name('service.edit');
+
 });

@@ -33,5 +33,5 @@
 @endsection
 @section('extraJs')
 <!-- testimonial.js -->
-<script src="{{ asset('assets/backend/js/custom/testimonial.js') }}"></script>
+<script src="{{ asset('assets/backend/js/custom/testimonial/testimonial.js') }}"></script>
 @endsection
