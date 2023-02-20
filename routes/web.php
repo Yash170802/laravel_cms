@@ -91,13 +91,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
     //GenralSetting.....................................................................................
-
     Route::get('setting', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'view'])->name('setting');
     Route::post('setting/logo/insert', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'logoinsert'])->name('logo-insert');
     Route::post('setting/favicon/insert', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'faviconinsert'])->name('favicon-insert');
     Route::post('setting/topbar/insert', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'topbarinsert'])->name('topbar-insert');
     Route::post('setting/email', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'emailsendinsert'])->name('email-insert');
     Route::post('setting/color_insert', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'colorinsert'])->name('color-insert');
+    Route::post('/social_media/insert', [App\Http\Controllers\Backend\setting\Genralsetting\GeneralSettingControllers::class, 'social_media_insert'])->name('social_media_insert');
 
     // SMTP SETTTING.............................................................................................
     Route::get('smtp_settings', [App\Http\Controllers\Backend\Setting\SmtpSettiingController::class, 'view'])->name('smtp_settings');
@@ -120,22 +120,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/product/image/view/delete', [App\Http\Controllers\Backend\product\ProductImageController::class, 'delete'])->name('product.image.view.delete');
     Route::post('/product/image/view/insert', [App\Http\Controllers\Backend\product\ProductImageController::class, 'insert'])->name('product.image.view.insert');
 
-    //Portfolio Categories.....................................................................................
+    // Portfolio Categories.....................................................................................
     Route::get('portfolioCategories', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'view'])->name('portfolioCategories');
     Route::post('/portfolioCategories/insert', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'insert'])->name('portfolioCategories.insert');
     Route::post('/portfolioCategories/list', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'list'])->name('portfolioCategories.list');
     Route::post('/portfolioCategories/delete', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'delete'])->name('portfolioCategories.delete');
     Route::post('/portfolioCategories/edit', [App\Http\Controllers\Backend\PortfolioCategories\PortfolioCategoriesController::class, 'edit'])->name('portfolioCategories.edit');
 
-    //portfolio.............................................................................................
+    // Portfolio.............................................................................................
     Route::get('portfolio', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'view'])->name('portfolio');
     Route::post('/portfolio/insert', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'insert'])->name('portfolio.insert');
     Route::post('/portfolio/list', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'list'])->name('portfolio.list');
     Route::post('/portfolio/delete', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'delete'])->name('portfolio.delete');
     Route::post('/portfolio/edit', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'edit'])->name('portfolio.edit');
     Route::post('/portfolio/image/delete', [App\Http\Controllers\Backend\Portfolio\PortfolioController::class, 'image_delete'])->name('portfolio.image.delete');
-
-
 
     // CLIENT ROUTE................................................................................................
     Route::get('client', [App\Http\Controllers\Backend\client\ClientController::class, 'view'])->name('client');
@@ -151,18 +149,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::post('/faq/delete', [App\Http\Controllers\Backend\faq\FaqController::class, 'faq_delete'])->name('faq-delete');
     Route::post('/faq/edit', [App\Http\Controllers\Backend\faq\FaqController::class, 'faq_edit'])->name('faq-edit');
 
-    //FEATURES...................................................................................................
+    // FEATURES...................................................................................................
     Route::get('feature', [App\Http\Controllers\Backend\feature\FeatureController::class, 'view'])->name('feature');
     Route::post('/feature/insert', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_insert'])->name('feature-insert');
     Route::post('/feature/list', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_list'])->name('feature-list');
     Route::post('/feature/delete', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_delete'])->name('feature-delete');
     Route::post('/feature/edit', [App\Http\Controllers\Backend\feature\FeatureController::class, 'feature_edit'])->name('feature-edit');
 
-    //service...........................................................................................
+    // Service.....................................................................................................
     Route::get('service', [App\Http\Controllers\Backend\Service\ServiceController::class, 'view'])->name('service');
     Route::post('/service/insert', [App\Http\Controllers\Backend\Service\ServiceController::class, 'insert'])->name('service.insert');
     Route::post('/service/list', [App\Http\Controllers\Backend\Service\ServiceController::class, 'list'])->name('service.list');
     Route::post('/service/delete', [App\Http\Controllers\Backend\Service\ServiceController::class, 'delete'])->name('service.delete');
     Route::post('/service/edit', [App\Http\Controllers\Backend\Service\ServiceController::class, 'edit'])->name('service.edit');
-
 });

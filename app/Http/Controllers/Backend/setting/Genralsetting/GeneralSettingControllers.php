@@ -15,27 +15,23 @@ class GeneralSettingControllers extends Controller
         // Get Value...................................................................................................
         $img_name = get_option('logo_img');
         $favicon_name = get_option('favicon_img');
-        $email = get_option('email');
-        $number = get_option('number');
-        $favcolor = get_option('favcolor');
-        $sendemail = get_option('send_email');
-        $receiveemail = get_option('receive_email');
+        // $email = get_option('email');
+        // $number = get_option('number');
+        // $favcolor = get_option('favcolor');
+        // $sendemail = get_option('send_email');
+        // $receiveemail = get_option('receive_email');
+
+
 
         // Store In Array..................................................................................................
-        // $data['logo'] = $img_name->value;
-        // $data['favicon'] = $favicon_name->value;
-        // $data['email'] = $email->value;
-        // $data['number'] = $number->value;
-        // $data['favcolor'] = $favcolor->value;
-        // $data['send_email'] = $sendemail->value;
-        // $data['receive_email'] = $receiveemail->value;
-        $data['logo'] = (isset($img_name->value) ? ($img_name->value) : '');
+
+        $data['logo'] = isset($img_name->value) ? ($img_name->value) : '';
         $data['favicon'] = isset($favicon_name->value) ? ($favicon_name->value) : '';
-        $data['email'] = isset($email->value) ? ($email->value) : '';
-        $data['number'] = isset($number->value) ? ($number->value) : '';
-        $data['favcolor'] = isset($favcolor->value) ? ($favcolor->value) : '';
-        $data['send_email'] = isset($sendemail->value) ? ($sendemail->value) : '';
-        $data['receive_email'] = isset($receiveemail->value) ? ($receiveemail->value) : '';
+        // $data['email'] = isset($email->value) ? ($email->value) : '';
+        // $data['number'] = isset($number->value) ? ($number->value) : '';
+        // $data['favcolor'] = isset($favcolor->value) ? ($favcolor->value) : '';
+        // $data['send_email'] = isset($sendemail->value) ? ($sendemail->value) : '';
+        // $data['receive_email'] = isset($receiveemail->value) ? ($receiveemail->value) : '';
 
         // Return View................................................................................................
         return view('Backend.generalsetting.generalsetting', $data);
@@ -43,49 +39,64 @@ class GeneralSettingControllers extends Controller
     // Logo.....................................................................................................
     public function logoinsert(Request $request)
     {
-        // $post = $request->post();
 
         $data['status'] = 0;
-        $data['massage'] = "General Setting record not save";
-
-        $img_name = DB::table('settings')->where('name', 'logo_img')->first();
-
-        // $old_img = get_option('logo_img');
-        $old_img = public_path(LOGO_IMAGE_PATH) . '/' . $img_name->value;
-
-        if (File::exists($old_img)) {
-            File::delete($old_img);
+        $data['massage'] = "Logo not successful";
+        if ($request->img_name) {
+            $image_path = public_path(LOGO_IMAGE_PATH) . '/' . $request->img_name;
+            @unlink($image_path);
         }
-        $file = $request->file('logo_img');
-        $filename =  $file->getClientOriginalName();
-        $file->move(public_path(LOGO_IMAGE_PATH), $filename);
-        update_option('logo_img ', $filename);
-        $data['status'] = 1;
-        $data['massage'] = "Logo Upload Successful";
 
+        if ($request->file('logo_img')) {
+            $file = $request->file('logo_img');
+
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path(LOGO_IMAGE_PATH), $filename);
+
+            $imageAdd['logo_img'] = $filename;
+
+
+            if ($filename) {
+                $img_name['logo_img'] = $filename;
+                foreach ($img_name as $name => $value) {
+                    update_option($name, $value);
+                }
+                $data['status'] = 1;
+                $data['massage'] = "Logo update successful";
+            }
+        }
         return json_encode($data);
+       
     }
     // Favicon.....................................................................................................
     public function faviconinsert(Request $request)
     {
+      
+        
         $data['status'] = 0;
-        $data['massage'] = "General Setting record not save";
-
-        $favicon_name = DB::table('settings')->where('name', 'favicon_img')->first();
-
-        $old_img = get_option('logo_img');
-        $old_img = public_path(FAVICON_IMAGE_PATH . $favicon_name->value);
-
-        if (File::exists($old_img)) {
-            File::delete($old_img);
+        $data['massage'] = "Favicon Logo not successful";
+        if ($request->favicon_img) {
+            $image_path = public_path(FAVICON_IMAGE_PATH) . '/' . $request->favicon_img;
+            @unlink($image_path);
         }
-        $file = $request->file('favicon_img');
-        $filename =  $file->getClientOriginalName();
-        $file->move(public_path(FAVICON_IMAGE_PATH), $filename);
-        update_option('favicon_img ', $filename);
-        $data['status'] = 1;
-        $data['massage'] = "Logo Upload Successful";
 
+        if ($request->file('favicon_img')) {
+            $file = $request->file('favicon_img');
+
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path(FAVICON_IMAGE_PATH), $filename);
+
+
+
+            if ($filename) {
+                $img_name['favicon_img'] = $filename;
+                foreach ($img_name as $name => $value) {
+                    update_option($name, $value);
+                }
+                $data['status'] = 1;
+                $data['massage'] = "Favicon Logo update successful";
+            }
+        }
         return json_encode($data);
     }
     // Top Bar.....................................................................................................
@@ -130,6 +141,21 @@ class GeneralSettingControllers extends Controller
             }
             $data['status'] = 1;
             $data['massage'] = "Color insert successful";
+        }
+        return json_encode($data);
+    }
+    public function social_media_insert(Request $request)
+    {
+        $data['status'] = 0;
+        $data['massage'] = "Email record not save";
+        $post = $request->post();
+
+        if ($post) {
+            foreach ($post as $name => $value) {
+                update_option($name, $value);
+            }
+            $data['status'] = 1;
+            $data['massage'] = "Record insert successful";
         }
         return json_encode($data);
     }
