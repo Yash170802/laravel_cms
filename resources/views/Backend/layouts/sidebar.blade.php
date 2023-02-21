@@ -112,7 +112,7 @@ $route = Route::currentRouteName();
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::routeIs('admin.testimonial') ? 'active' : '' }}">
                     <a href="{{ route('admin.testimonial') }}" class="menu-link">
-                        
+
                         <div data-i18n="TestiMonial">TestiMonial</div>
                     </a>
                 </li>
@@ -253,7 +253,7 @@ $route = Route::currentRouteName();
                 </li>
             </ul>
         </li>
-        <li class="menu-item {{ Request::routeIs('admin.smtp_settings') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::routeIs('admin.portfolio') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons fa fa-bars"></i>
                 <div data-i18n="Portfolio">Portfolio</div>
